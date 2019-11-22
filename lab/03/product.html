@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="product" ng-controller="productCtrl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+
+    <title>Products</title>
+</head>
+<body>
+<div class="container">
+    <div class="row my-5">
+        <div class="row mb-3 col-12">
+            <div class="col-8 col-md-10">
+                <input class="form-control" ng-keyup="furrySearch()" ng-model="search" placeholder="search"
+                       type="text">
+            </div>
+            <div class="col-4 col-md-2">
+                <select class="form-control" id="" name="searchType" ng-model="type">
+                    <option ng-repeat="type in ['fuzzy','name','date','price']" value="{{type}}">{{type}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Price</th>
+                    <th scope="col">Product Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="product in products track by $index">
+                    <td>{{$index}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.date}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-4 col-lg-3 mb-3" ng-repeat="product in products track by $index">
+            <div class="card">
+                <img alt="pan" class="card-img-top" src="{{product.image}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.price}}</p>
+                    <button class="btn btn-primary btn-sm" ng-click="showDetail($index)">Detail</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="prodDetail" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Product Information</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" ng-click="" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-md-4">
+                            <img alt="pan" class="img-fluid" src="{{productDetail.image}}">
+                        </div>
+                        <div class="col-12 col-md-auto">
+                            <h4>{{productDetail.name}}</h4>
+                            <p>Price: {{productDetail.price}}</p>
+                            <p>Date: {{productDetail.date}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+<script src="product.js"></script>
+</body>
+</html>

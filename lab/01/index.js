@@ -1,6 +1,6 @@
-const app = angular.module("demoApp", [])
+angular.module("demoApp", [])
 
-    .controller("demoController", function ($scope) {
+    .controller("demoController", ($scope) => {
         $scope.myVar = "Fist AngularJS App";
         $scope.name = "My name";
         $scope.email = "myemail@example.com";
