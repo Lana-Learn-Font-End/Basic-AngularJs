@@ -1,0 +1,28 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Image</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in $ctrl.data track by $index">
+        <td>{{$index + 1}}</td>
+        <td>{{item.name}}</td>
+        <td class="text-success" ng-if="item.salePrice <= 0">${{item.price}}</td>
+        <td ng-if="item.salePrice > 0">
+            <p class="text-success">${{item.salePrice}}</p>
+            <small class="text-muted">
+                <del>{{item.price}}</del>
+            </small>
+        </td>
+        <td><img alt="" src="{{item.image}}" style="max-height: 50px"></td>
+        <td>
+            <button class="btn btn-primary btn-sm">Detail</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
