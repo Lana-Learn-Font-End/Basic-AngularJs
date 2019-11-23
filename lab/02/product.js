@@ -1,16 +1,16 @@
-angular.module("product", [])
+const app = angular.module("product", []);
 
-    .controller("productCtrl", ($scope) => {
-        $scope.products = getProducts(4);
-        $scope.productDetail = $scope.products[0];
-        $scope.showDetail = (index) => {
-            $("#prodDetail").modal("show");
-            $scope.productDetail = $scope.products[index]
-        };
-        $scope.closeDetail = () => {
-            $("#prodDetail").modal("hide");
-        }
-    });
+app.controller("productCtrl", function ($scope) {
+    $scope.products = getProducts(4);
+    $scope.productDetail = $scope.products[0];
+    $scope.showDetail = (index) => {
+        $("#prodDetail").modal("show");
+        $scope.productDetail = $scope.products[index]
+    };
+    $scope.closeDetail = () => {
+        $("#prodDetail").modal("hide");
+    }
+});
 
 
 function getProducts(number) {
