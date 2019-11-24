@@ -8,7 +8,7 @@
     <title>Products</title>
 </head>
 <body>
-<app-nav></app-nav>
+<app-nav on-search="ctrl.searchByName(value)"></app-nav>
 <div class="my-5 container">
     <ng-view></ng-view>
 </div>

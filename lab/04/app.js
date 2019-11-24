@@ -4,11 +4,21 @@ app.controller("ProductCtrl", function ProductCtrl($http) {
     ctrl.$onInit = () => {
         $http
             .get("product.json")
-            .then(products => ctrl.data = products.data)
+            .then(products => {
+                ctrl.data = products.data;
+                ctrl.originData = products.data;
+            })
             .catch(err => console.log(err))
     };
-
+    ctrl.originData = [];
     ctrl.data = [];
+    ctrl.searchByName = (value) => {
+        if (value) {
+            ctrl.data = ctrl.originData.filter(item => item.name.includes(value));
+        } else {
+            ctrl.data = ctrl.originData;
+        }
+    };
     // pass undefined so modal won't show
     ctrl.itemDetail = undefined;
     ctrl.showModal = index => ctrl.itemDetail = ctrl.data[index];
@@ -36,6 +46,9 @@ app.component("appNav", {
     controller: function NavBarCtrl($location) {
         const ctrl = this;
         ctrl.loc = $location;
+    },
+    bindings: {
+        onSearch: "&"
     }
 });
 
