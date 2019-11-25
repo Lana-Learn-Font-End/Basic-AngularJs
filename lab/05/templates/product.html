@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th ng-show="showIndex" scope="col">STT</th>
+        <th ng-repeat="col in cols track by $index" scope="col">
+            {{col.charAt(0).toUpperCase() + col.slice(1)}}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in data track by $index">
+        <td ng-show="showIndex">{{$index + 1}}</td>
+        <td ng-repeat="col in cols track by $index">
+            {{item[col]}}
+        </td>
+    </tr>
+    </tbody>
+</table>
