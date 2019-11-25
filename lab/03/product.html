@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="product" ng-controller="productCtrl">
+<html lang="en" ng-app="product" ng-controller="productCtrl as ctrl">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -13,12 +13,12 @@
     <div class="row my-5">
         <div class="row mb-3 col-12">
             <div class="col-8 col-md-10">
-                <input class="form-control" ng-keyup="furrySearch()" ng-model="search" placeholder="search"
+                <input class="form-control" ng-model="ctrl.search" placeholder="search"
                        type="text">
             </div>
             <div class="col-4 col-md-2">
-                <select class="form-control" id="" name="searchType" ng-model="type">
-                    <option ng-repeat="type in ['fuzzy','name','date','price']" value="{{type}}">{{type}}</option>
+                <select class="form-control" ng-model="ctrl.type">
+                    <option ng-repeat="type in ['name','date','price']" value="{{type}}">{{type}}</option>
                 </select>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="product in products track by $index">
+                <tr ng-repeat="product in ctrl.products | filter: {[ctrl.type]:(ctrl.search)} track by $index">
                     <td>{{$index + 1}}</td>
                     <td>{{product.name}}</td>
                     <td>{{product.price}}</td>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6 col-md-4 col-lg-3 mb-3" ng-repeat="product in products track by $index">
+        <div class="col-6 col-md-4 col-lg-3 mb-3" ng-repeat="product in ctrl.products track by $index">
             <div class="card">
                 <img alt="pan" class="card-img-top" src="{{product.image}}">
                 <div class="card-body">
@@ -68,12 +68,12 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 col-md-3 col-md-4">
-                            <img alt="pan" class="img-fluid" src="{{productDetail.image}}">
+                            <img alt="pan" class="img-fluid" src="{{ctrl.productDetail.image}}">
                         </div>
                         <div class="col-12 col-md-auto">
-                            <h4>{{productDetail.name}}</h4>
-                            <p>Price: {{productDetail.price}}</p>
-                            <p>Date: {{productDetail.date}}</p>
+                            <h4>{{ctrl.productDetail.name}}</h4>
+                            <p>Price: {{ctrl.productDetail.price}}</p>
+                            <p>Date: {{ctrl.productDetail.date}}</p>
                         </div>
                     </div>
                 </div>
