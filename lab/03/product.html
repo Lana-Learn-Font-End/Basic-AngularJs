@@ -14,11 +14,11 @@
         <div class="row mb-3 col-12">
             <div class="col-8 col-md-10">
                 <input class="form-control" ng-model="ctrl.search" placeholder="search"
-                       type="text">
+                       ng-keyup="ctrl.doSearch()" type="text">
             </div>
             <div class="col-4 col-md-2">
                 <select class="form-control" ng-model="ctrl.type">
-                    <option ng-repeat="type in ['name','date','price']" value="{{type}}">{{type}}</option>
+                    <option ng-repeat="type in ['fuzzy','name','date','price']" value="{{type}}">{{type}}</option>
                 </select>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="product in ctrl.products | filter: {[ctrl.type]:(ctrl.search)} track by $index">
+                <tr ng-repeat="product in ctrl.filtered track by $index">
                     <td>{{$index + 1}}</td>
                     <td>{{product.name}}</td>
                     <td>{{product.price}}</td>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6 col-md-4 col-lg-3 mb-3" ng-repeat="product in ctrl.products track by $index">
+        <div class="col-6 col-md-4 col-lg-3 mb-3" ng-repeat="product in ctrl.filtered track by $index">
             <div class="card">
                 <img alt="pan" class="card-img-top" src="{{product.image}}">
                 <div class="card-body">

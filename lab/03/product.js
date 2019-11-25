@@ -1,16 +1,27 @@
 const app = angular.module("product", []);
 
-app.controller("productCtrl", function () {
+app.controller("productCtrl", function ($filter) {
     const ctrl = this;
-    ctrl.originProducts = getProducts(8);
-    ctrl.products = ctrl.originProducts;
+    ctrl.products = getProducts(8);
     ctrl.productDetail = ctrl.products[0];
-    ctrl.type = "name";
+    ctrl.type = "fuzzy";
+    ctrl.search = "";
+    ctrl.filtered = ctrl.products;
+
+    ctrl.doSearch = () => {
+        ctrl.filtered = $filter("filter")(ctrl.products, (() => {
+            if (ctrl.type === "fuzzy")
+                return ctrl.search;
+            else
+                return {[ctrl.type]: (ctrl.search)}
+        })());
+    };
 
     ctrl.showDetail = (index) => {
         $("#prodDetail").modal("show");
         ctrl.productDetail = ctrl.products[index]
     };
+
     ctrl.closeDetail = () => {
         $("#prodDetail").modal("hide");
     };
