@@ -1,0 +1,41 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th ng-repeat="col in $ctrl.cols track by $index" scope="col">
+            {{col.charAt(0).toUpperCase() + col.slice(1)}}
+        </th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in $ctrl.data track by $index">
+        <td>{{$index + 1}}</td>
+        <td ng-repeat="col in $ctrl.cols track by $index">
+            {{item[col]}}
+        </td>
+        <td>
+            <button class="btn btn-info btn-sm" ng-click="$ctrl.show($index)">Detail</button>
+            <button class="btn btn-danger btn-sm ml-2" ng-click="$ctrl.delete($index)">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<app-detail-modal show="$ctrl.itemDetail">
+    <div class="modal-header">
+        <h5 class="modal-title">Product Information</h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" ng-click="$ctrl.onClose()" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="d-flex justify-content-center" ng-if="$ctrl.itemDetail">
+            <div>
+                <p ng-repeat="col in $ctrl.cols track by $index">
+                    {{col.charAt(0).toUpperCase() + col.slice(1)}} :
+                    <span class="text-info">{{$ctrl.itemDetail[col]}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</app-detail-modal>
