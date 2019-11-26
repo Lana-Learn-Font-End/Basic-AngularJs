@@ -9,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in $ctrl.data track by $index">
+    <tr ng-repeat="item in $ctrl.getDataPage() track by $index">
         <td>{{$index + 1}}</td>
         <td ng-repeat="col in $ctrl.cols track by $index">
             {{item[col]}}
@@ -21,6 +21,22 @@
     </tr>
     </tbody>
 </table>
+<ul class="pagination d-flex justify-content-center">
+    <li class="page-item" ng-if="!$ctrl.nav.isFirst()">
+        <button class=" page-link" ng-click="$ctrl.nav.prev()">
+            <span aria-hidden="true">&laquo;</span>
+        </button>
+    </li>
+    <li class="page-item">
+        <div class="text-muted page-link">{{($ctrl.page + 1) + ' / ' + $ctrl.lastPage}}</div>
+    </li>
+    <li class="page-item" ng-if="!$ctrl.nav.isLast()">
+        <button class="page-link" ng-click="$ctrl.nav.next()">
+            <span aria-hidden="true">&raquo;</span>
+        </button>
+    </li>
+</ul>
+
 <app-detail-modal show="$ctrl.itemDetail">
     <div class="modal-header">
         <h5 class="modal-title">Product Information</h5>

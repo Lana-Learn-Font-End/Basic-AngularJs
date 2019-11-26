@@ -19,8 +19,11 @@ app.controller("AppCtrl", function () {
 });
 
 app.config(function ($routeProvider) {
-    $routeProvider.when("/products/:page", {
-        template: "<app-table data='ctrl.data' cols='ctrl.fields'></app-table>"
-    });
-    $routeProvider.otherwise({redirectTo: "/home"})
+    $routeProvider
+        .when("/products/page/:page", {
+            template: "<app-table data='ctrl.data' cols='ctrl.fields'></app-table>",
+        })
+        .when("/products", {
+            redirectTo: "/products/page/1"
+        });
 });
