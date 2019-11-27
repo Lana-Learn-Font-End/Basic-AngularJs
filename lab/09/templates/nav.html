@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" ng-class="{active: $location.path().startsWith('/table')}">
+                    <a class="nav-link" href="#!/table">Table<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" ng-class="{active: $location.path().startsWith('/card')}">
+                    <a class="nav-link" href="#!/card">Card</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input aria-label="Search"
+                       class="form-control mr-sm-2"
+                       ng-keyup="$ctrl.onSearch({value:search,by:by})"
+                       ng-model="search"
+                       placeholder="Search"
+                       type="search">
+                <select aria-label="Search By"
+                        class="form-control border-success text-success"
+                        id="type"
+                        name="by"
+                        ng-change="$ctrl.onSearch({value:search,by:by})"
+                        ng-model="by">
+                    <option selected value="name">Name</option>
+                    <option selected value="price">Price</option>
+                    <option selected value="sale">Sale</option>
+                    <option selected value="fuzzy">Fuzzy</option>
+                </select>
+            </form>
+        </div>
+    </div>
+</nav>

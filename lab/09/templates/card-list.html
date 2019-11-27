@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-6 col-md-4 col-lg-3 my-3" ng-repeat="item in $ctrl.data track by $index">
+        <div class="card">
+            <img alt="pan" class="card-img-top" src="{{item.image}}">
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <div class="card-text mb-2">
+                    <div ng-if="item.salePrice > 0">
+                        <span class="text-success">${{item.salePrice}}</span>
+                        <small class="text-muted">
+                            <del>{{item.price}}</del>
+                        </small>
+                    </div>
+                    <div ng-if="item.salePrice <= 0">
+                        <span class="text-success">${{item.price}}</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-sm" ng-click="$ctrl.onShowDetail({index:$index})">Detail</button>
+            </div>
+        </div>
+    </div>
+</div>

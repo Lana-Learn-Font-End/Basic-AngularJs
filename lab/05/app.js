@@ -1,4 +1,4 @@
-const app = angular.module("productApp", ['ngRoute']);
+const app = angular.module("productApp", ["ngRoute"]);
 
 app.controller("ProductCtrl", function () {
     const ctrl = this;

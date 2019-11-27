@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="productApp" ng-controller="ProductCtrl as ctrl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <title>Products</title>
+</head>
+<body>
+<app-nav on-search="ctrl.searchByName(value , by)"></app-nav>
+<div class="my-5 container">
+    <ng-view></ng-view>
+</div>
+<app-detail item="ctrl.itemDetail" on-close="ctrl.closeModal()"></app-detail>
+<script crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 const app = angular.module("productApp", ["ngRoute"]);
-app.controller("ProductCtrl", function ProductCtrl($http) {
+app.controller("ProductCtrl", function ProductCtrl($http, $filter) {
     const ctrl = this;
     ctrl.$onInit = () => {
         $http
@@ -12,12 +12,15 @@ app.controller("ProductCtrl", function ProductCtrl($http) {
     };
     ctrl.originData = [];
     ctrl.data = [];
-    ctrl.searchByName = (value) => {
-        if (value) {
-            ctrl.data = ctrl.originData.filter(item => item.name.includes(value));
-        } else {
-            ctrl.data = ctrl.originData;
-        }
+    ctrl.searchByName = (value, by) => {
+        ctrl.data = {
+            name: $filter("filter")(ctrl.originData, {name: value}),
+            fuzzy: $filter("filter")(ctrl.originData, value),
+            sale: $filter("filter")(ctrl.originData, {name: value}).filter(item => item.salePrice > 0),
+            price: ctrl.originData.filter(item =>
+                item.price.toString().includes(value) ||
+                item.salePrice.toString().includes(value))
+        }[by];
     };
     // pass undefined so modal won't show
     ctrl.itemDetail = undefined;
@@ -43,9 +46,10 @@ app.component("appCardList", {
 
 app.component("appNav", {
     templateUrl: "templates/nav.html",
-    controller: function NavBarCtrl($location) {
-        const ctrl = this;
-        ctrl.loc = $location;
+    controller: function NavBarCtrl($scope, $location) {
+        $scope.$location = $location;
+        $scope.by = "name";
+        $scope.search = "";
     },
     bindings: {
         onSearch: "&"
