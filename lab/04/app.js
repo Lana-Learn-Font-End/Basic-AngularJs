@@ -57,7 +57,6 @@ app.component("appDetail", {
     controller: function DetailCtrl() {
         const ctrl = this;
         ctrl.$onChanges = () => {
-            console.log("change");
             if (ctrl.item)
                 $("#itemDetail").modal("show");
         };
