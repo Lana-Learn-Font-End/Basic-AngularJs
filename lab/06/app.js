@@ -1,21 +1,23 @@
-const app = angular.module("form", ['ngMessages']);
+const app = angular.module("form", ["ngMessages"]);
 
 app.directive("equalTo", function () {
     return {
-        restrict: 'A',
+        restrict: "A",
         require: "ngModel",
+        scope: {
+            ngModel: "=",
+            equalTo: "="
+        },
         link: (scope, element, attrs, ctrl) => {
             // observe the equal-to and re-validate on change
-            attrs.$observe("equalTo", validate);
+            scope.$watch("equalTo", validate);
 
             // watch own input value and re-validate on change
-            scope.$watch(attrs.ngModel, validate);
+            scope.$watch("ngModel", validate);
 
             function validate() {
                 const inputVal = ctrl.$viewValue;
-                const equalTo = attrs["equalTo"];
-                console.log(equalTo);
-                console.log(inputVal);
+                const equalTo = scope["equalTo"];
                 ctrl.$setValidity("equalTo", !inputVal || !equalTo || inputVal === equalTo);
             }
         }
@@ -24,10 +26,10 @@ app.directive("equalTo", function () {
 
 app.directive("fuckingStrong", function () {
     return {
-        restrict: 'A',
+        restrict: "A",
         require: "ngModel",
         link: (scope, element, attrs, ctrl) => {
-            scope.$watch(attrs.ngModel, validate);
+            scope.$watch(attrs["ngModel"], validate);
 
             function validate() {
                 console.log(ctrl.$viewValue);

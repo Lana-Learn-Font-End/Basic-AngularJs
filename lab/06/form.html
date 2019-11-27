@@ -10,14 +10,19 @@
         ng-message {
             display: block;
         }
+
+        hr {
+            margin-left: 0;
+            margin-right: 0;
+        }
     </style>
 </head>
 <body>
 <div class="container my-5 d-flex justify-content-center">
     <div class="p-4 border rounded">
-        <form method="post" name="signUpForm" novalidate>
+        <form class="d-flex flex-column" method="post" name="signUpForm" novalidate>
             <h5>Sign up for free</h5>
-            <hr>
+            <hr class="my-2">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input class="form-control"
@@ -72,18 +77,17 @@
             <div class="form-group">
                 <label for="re-password">Re-type Password</label>
                 <input class="form-control"
-                       equal-to="{{password}}"
+                       equal-to="signUpForm.password.$viewValue"
                        id="re-password"
                        name="rePassword"
                        ng-class="{'is-invalid': signUpForm.rePassword.$dirty && signUpForm.rePassword.$invalid}"
-                       ng-keyup="log(signUpForm.rePassword.$error)"
                        ng-model="rePassword"
                        placeholder="Re-type"
+                       required
                        type="password">
-                <ng-messages>
-
-                </ng-messages>
+                <div class="invalid-feedback">Password not match, bruh</div>
             </div>
+            <button class="btn btn-info" ng-class="{'disabled': signUpForm.$invalid}" type="submit">Sign up</button>
         </form>
     </div>
 </div>
