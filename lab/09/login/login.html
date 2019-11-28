@@ -1,3 +1,49 @@
-<div>
-    <form method="post"></form>
+<div class="d-flex justify-content-center" ng-if="!$ctrl.account.isLoggedIn()">
+    <div class="p-4 border rounded">
+        <h5>Login</h5>
+        <hr class="my-2 mx-0">
+        <form class="d-flex flex-column" method="post" name="form" novalidate>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" id="username" name="username" ng-model="username" required
+                       type="text">
+                <div class="invalid-feedback d-block" ng-if="form.username.$dirty && form.username.$error.required">
+                    Please enter ur username
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" id="password" name="password" ng-model="password" required
+                       type="password">
+                <div class="invalid-feedback d-block" ng-if="form.password.$dirty && form.password.$error.required">
+                    Please enter ur password
+                </div>
+                <div class="invalid-feedback d-block" ng-if="$ctrl.loginErrorMessage">
+                    {{$ctrl.loginErrorMessage}}
+                </div>
+            </div>
+            <div class="alert alert-warning alert-dismissible fade show form-group" ng-if="$ctrl.loggedOut"
+                 role="alert">
+                You have logged out
+                <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <button class="btn btn-info mt-2" ng-class="{disabled: form.$invalid}"
+                    ng-click="$ctrl.login(username,password)">Login
+            </button>
+        </form>
+    </div>
+</div>
+<div class="d-flex justify-content-center" ng-if="$ctrl.account.isLoggedIn()">
+    <div class="p-4 border rounded d-flex flex-column">
+        <h5>Your Account</h5>
+        <hr class="my-2 mx-0">
+        <div ng-repeat="(key,value) in $ctrl.account.getAccountInfo()">
+            <div><span>{{key}}: </span> <span class="text-info">{{value}}</span></div>
+        </div>
+        <button class="btn btn-info mt-3" ng-class="{disabled: form.$invalid}"
+                ng-click="$ctrl.logout()">Logout
+        </button>
+    </div>
 </div>

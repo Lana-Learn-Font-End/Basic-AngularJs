@@ -1,19 +1,21 @@
 const app = angular.module("loginProduct", ["ngRoute"]);
 
-app.controller("AppCtrl", function ($location, $rootScope, accountService) {
+app.controller("AppCtrl", function ($route, $location, $rootScope, accountService) {
     const ctrl = this;
-    ctrl.loginCheckAndRedirect = () => {
+    ctrl.loginModalShow = false;
+
+    ctrl.$onInit = () => {
         if (!accountService.isLoggedIn()) {
             $location.path("/account");
         }
     };
 
-    ctrl.$onInit = () => {
-        ctrl.loginCheckAndRedirect();
-    };
-
     $rootScope.$on("$routeChangeStart", () => {
-        ctrl.loginCheckAndRedirect();
+        if (!accountService.isLoggedIn()) {
+            if ($location.path().indexOf("/account") !== 0)
+                ctrl.loginModalShow = true;
+            $location.path("/account");
+        }
     })
 });
 
@@ -21,7 +23,7 @@ app.config(function ($routeProvider) {
     $routeProvider.when("/", {
         template: "<app-table></app-table>"
     });
-    $routeProvider.when("/login", {
+    $routeProvider.when("/account", {
         template: "<app-login></app-login>"
     })
 });

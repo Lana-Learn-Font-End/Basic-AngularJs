@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="loginProduct" ng-controller="AppCtrl">
+<html lang="en" ng-app="loginProduct" ng-controller="AppCtrl as ctrl">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -13,6 +13,15 @@
 <div class="container my-5">
     <ng-view></ng-view>
 </div>
+<app-detail-modal show="ctrl.loginModalShow">
+    <div class="alert alert-warning alert-dismissible m-0" role="alert">
+        <strong>Please login first</strong>
+        <button aria-label="Close" class="close" data-dismiss="modal" ng-click="ctrl.loginModalShow = false"
+                type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</app-detail-modal>
 <script crossorigin="anonymous"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

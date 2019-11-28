@@ -3,7 +3,7 @@ app.service("accountService", function ($http) {
 
     this.isLoggedIn = () => !!sessionStorage.getItem(`${this.appId}-isLoggedIn`);
 
-    this.getAccountInfo = () => sessionStorage.getItem(`${this.appId}-accountInfo`);
+    this.getAccountInfo = () => JSON.parse(sessionStorage.getItem(`${this.appId}-accountInfo`));
 
     this.login = (username, password) => {
         return new Promise((resolve, reject) => {
@@ -13,7 +13,7 @@ app.service("accountService", function ($http) {
                 $http
                     .get("userinfo.json")
                     .then(data => {
-                        sessionStorage.setItem(`${this.appId}-accountInfo`, JSON.stringify(data));
+                        sessionStorage.setItem(`${this.appId}-accountInfo`, JSON.stringify(data.data));
                         resolve(data)
                     })
                     .catch(err => reject(err));
