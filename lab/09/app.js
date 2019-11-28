@@ -1,20 +1,25 @@
 const app = angular.module("loginProduct", ["ngRoute"]);
 
-app.controller("AppCtrl", function ($http) {
+app.controller("AppCtrl", function ($location, $rootScope, accountService) {
     const ctrl = this;
-    ctrl.data = [];
-    $http
-        .get("../product.json")
-        .then(res => ctrl.data = res.data.filter(item => item != undefined));
+    ctrl.loginCheckAndRedirect = () => {
+        if (!accountService.isLoggedIn()) {
+            $location.path("/account");
+        }
+    };
 
-    ctrl.delete = index => ctrl.data = ctrl.data.filter((_, i) => i !== index);
+    ctrl.$onInit = () => {
+        ctrl.loginCheckAndRedirect();
+    };
+
+    $rootScope.$on("$routeChangeStart", () => {
+        ctrl.loginCheckAndRedirect();
+    })
 });
 
 app.config(function ($routeProvider) {
     $routeProvider.when("/", {
-        templateUrl: "table.html",
-        controller: "AppCtrl",
-        controllerAs: "$ctrl"
+        template: "<app-table></app-table>"
     });
     $routeProvider.when("/login", {
         template: "<app-login></app-login>"
