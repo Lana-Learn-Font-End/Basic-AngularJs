@@ -6,8 +6,4 @@ function NavCtrl($location) {
 app.component("appNav", {
     templateUrl: "nav/nav.html",
     controller: NavCtrl,
-    bindings: {
-        cols: "=",
-        data: "="
-    }
 });
