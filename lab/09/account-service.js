@@ -7,8 +7,9 @@ app.service("accountService", function ($http) {
 
     this.login = (username, password) => {
         return new Promise((resolve, reject) => {
-            if (username === "toandzvl" && password === "123456") {
+            if (username === "toandz" && password === "123456") {
                 sessionStorage.setItem(`${this.appId}-isLoggedIn`, "logged");
+                // visualization fetching data from server
                 $http
                     .get("userinfo.json")
                     .then(data => {
