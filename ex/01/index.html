@@ -19,23 +19,30 @@
                 <h3 class="panel-title">Đăng nhập hệ thống</h3>
             </div>
             <div class="panel-body">
-                <form action="" method="POST" role="form">
-
+                <form action="" method="POST" name="form" role="form">
                     <div class="form-group">
                         <label for="username">Tên đăng nhập</label>
-                        <input class="form-control" id="username" name="username" ng-model="username"
+                        <input class="form-control" id="username" name="username" ng-model="loginForm.username"
                                placeholder="Tên đăng nhập"
-                               type="text">
+                               required type="text">
+                        <div class="text-danger"
+                             ng-show="form.username.$dirty && form.username.$error.required">Please enter your username
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="password">Mật khẩu</label>
-                        <input class="form-control" id="password" name="password" ng-model="password"
+                        <input class="form-control" id="password" name="password" ng-model="loginForm.password"
                                placeholder="Mật khẩu"
-                               type="password">
+                               required type="password">
+                        <div class="text-danger"
+                             ng-show="form.password.$dirty && form.password.$error.required">Please enter your password
+                        </div>
+                        <div class="text-danger" ng-show="loginFailed">Wrong username or password</div>
                     </div>
-
-                    <button class="btn btn-primary" ng-click="login()" type="submit">Đăng nhập</button>
-                    <button class="btn btn-danger" type="reset">Reset</button>
+                    <button class="btn btn-primary" ng-click="login()"
+                            type="button">Đăng nhập
+                    </button>
+                    <button class="btn btn-danger" ng-click="reset(); form.$setPristine()" type="reset">Reset</button>
                 </form>
             </div>
         </div>
@@ -45,35 +52,15 @@
                 <h3 class="panel-title">Thông tin tài khoản</h3>
             </div>
             <div class="panel-body">
-                <p><b>Id:</b> 2</p>
-                <p><b>Họ tên:</b> ABC</p>
-                <p><b>Email:</b> abc@gmail.com</p>
-                <p><b>Username:</b> vanan123456</p>
-                <p><b>Password:</b> vanan123456</p>
+                <p><b>Id:</b> {{loggedInUser.id}}</p>
+                <p><b>Họ tên:</b> {{loggedInUser.name}}</p>
+                <p><b>Email:</b> {{loggedInUser.email}}</p>
+                <p><b>Username:</b> {{loggedInUser.username}}</p>
+                <p><b>Password:</b> {{loggedInUser.password}}</p>
                 <p>
-                    <a class="label label-danger" href="">Thoát</a>
+                    <a class="label label-danger" ng-click="logout(); form.$setPristine()">Thoát</a>
                 </p>
             </div>
-        </div>
-    </div>
-</div>
-
-<!-- modal-view-student by id -->
-<div class="modal fade" id="modal-show">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;</button>
-                <h4 class="modal-title">Nguyễn Van Anh</h4>
-            </div>
-            <div class="modal-body">
-                <p><b>Id:</b> 1</p>
-                <p><b>Họ tên:</b> Nguyễn Van Anh</p>
-                <p><b>Email:</b> vananhn@gmail.com</p>
-                <p><b>Username:</b> vananh</p>
-                <p><b>Password:</b> vananh123</p>
-            </div>
-
         </div>
     </div>
 </div>

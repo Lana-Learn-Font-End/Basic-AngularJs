@@ -29,9 +29,9 @@
 
 <app-modal show="$ctrl.studentDetail">
     <div class="modal-header">
-        <button class="close" data-dismiss="modal" ng-click="$ctrl.close()" type="button">&times;
+        <button aria-hidden="true" class="close" data-dismiss="modal" ng-click="$ctrl.close()" type="button">&times;
         </button>
-        <h5 class="modal-title">Student Info</h5>
+        <h4 class="modal-title">{{$ctrl.studentDetail.name}}</h4>
     </div>
     <div class="modal-body text-center">
         <div class="text-left" style="display: inline-block">
