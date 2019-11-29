@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="btn btn-outline-dark ml-auto my-1" href="#!/cart">Go to my Cart</a>
+    </div>
+</nav>
+
+
+<div class="container my-5">
+    <div class="alert alert-warning alert-dismissible m-0" ng-show="$ctrl.addedItem" role="alert">
+        <strong>Success!</strong> Added {{$ctrl.itemCount}} {{$ctrl.addedItem.name}} to your cart
+        <button aria-label="Close" class="close" data-dismiss="alert" ng-click="$ctrl.addedItem = undefined"
+                type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-4 col-lg-3 my-3" ng-repeat="item in $ctrl.data track by $index">
+            <div class="card">
+                <img alt="pan" class="card-img-top" src="{{item.image}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <div class="card-text mb-2">
+                        <div ng-if="item.salePrice > 0">
+                            <span class="text-success">${{item.salePrice}}</span>
+                            <small class="text-muted">
+                                <del>{{item.price}}</del>
+                            </small>
+                        </div>
+                        <div ng-if="item.salePrice <= 0">
+                            <span class="text-success">${{item.price}}</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-sm" ng-click="$ctrl.showItem($index)">View</button>
+                    <button class="btn btn-outline-primary btn-sm" ng-click="$ctrl.addItem($index)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal show="$ctrl.itemDetail">
+    <div class="modal-header">
+        <h5 class="modal-title">Product Information</h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" ng-click="$ctrl.itemDetail = undefined"
+                type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row" ng-if="$ctrl.itemDetail">
+            <div class="col-12 col-md-3 col-md-4">
+                <img alt="pan" class="img-fluid" src="{{$ctrl.itemDetail.image}}">
+            </div>
+            <div class="col-12 col-md-auto">
+                <h4>{{$ctrl.itemDetail.name}}</h4>
+                <div>
+                    <div ng-if="$ctrl.itemDetail.salePrice > 0">
+                        <div class="text-success">${{$ctrl.itemDetail.salePrice}}</div>
+                        <small class="text-muted">
+                            <del>{{$ctrl.itemDetail.price}}</del>
+                        </small>
+                    </div>
+                    <div ng-if="$ctrl.itemDetail.salePrice <= 0">
+                        <span class="text-success">${{$ctrl.itemDetail.price}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-modal>

@@ -1,0 +1,53 @@
+<div class="container my-5">
+    <table class="table">
+        <thead>
+        <tr class="text-right">
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-right" ng-repeat="cartItem in $ctrl.data track by $index">
+            <td><img alt="product" src="{{cartItem.item.image}}" style="max-height: 60px"></td>
+            <td>{{cartItem.item.name}}</td>
+            <td ng-if="cartItem.item.salePrice <= 0">${{cartItem.item.price}}</td>
+            <td ng-if="cartItem.item.salePrice > 0">
+                <div>${{cartItem.item.salePrice}}</div>
+                <small class="text-muted">
+                    <del>{{cartItem.item.price}}</del>
+                </small>
+            </td>
+            <td class="text-info">{{cartItem.quantity}}</td>
+            <td class="text-success">
+                {{
+                cartItem.item.salePrice > 0 ?
+                cartItem.item.salePrice * cartItem.quantity:
+                cartItem.item.price * cartItem.quantity
+                }}
+            </td>
+            <td>
+                <button class="btn btn-info btn-sm" ng-click="$ctrl.addItem($index)">Add</button>
+                <button class="btn btn-danger btn-sm ml-2" ng-click="$ctrl.removeItem($index)">Delete</button>
+            </td>
+        </tr>
+        <tr class="text-center" ng-if="$ctrl.data.length === 0">
+            <td colspan="6">
+                <div class="alert alert-info m-0">
+                    Your cart is empty
+                </div>
+            </td>
+        </tr>
+        <tr class="text-right">
+            <td colspan="4"></td>
+            <td class="text-success"><h5 class="d-inline" ng-if="$ctrl.data.length !== 0">{{$ctrl.total()}}</h5></td>
+            <td>
+                <a class="btn btn-outline-warning" href="#!/products">Continue Shopping</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
