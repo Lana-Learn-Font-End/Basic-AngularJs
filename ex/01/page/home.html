@@ -15,27 +15,27 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="student in data | filter:search track by $index">
+        <tr ng-repeat="student in $ctrl.data | filter:search track by $index">
             <td>{{student.id}}</td>
             <td>{{student.name}}</td>
             <td>{{student.email}}</td>
             <td>
-                <a class="btn btn-xs btn-success" ng-click="show($index)"> Chi tiết </a>
+                <a class="btn btn-xs btn-success" ng-click="$ctrl.show($index)"> Chi tiết </a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
 
-<app-modal show="studentDetail">
+<app-modal show="$ctrl.studentDetail">
     <div class="modal-header">
-        <button class="close" data-dismiss="modal" ng-click="close()" type="button">&times;
+        <button class="close" data-dismiss="modal" ng-click="$ctrl.close()" type="button">&times;
         </button>
         <h5 class="modal-title">Student Info</h5>
     </div>
     <div class="modal-body text-center">
         <div class="text-left" style="display: inline-block">
-            <div ng-repeat="(key, value) in studentDetail">{{key}}: <span class="text-info">{{value}}</span></div>
+            <div ng-repeat="(key, value) in $ctrl.studentDetail">{{key}}: <span class="text-info">{{value}}</span></div>
         </div>
     </div>
 </app-modal>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="app" ng-controller="MainCtrl">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -8,14 +8,13 @@
     <title>Angularjs</title>
 </head>
 <body>
-<!-- include file menu nav.html -->
-<div ng-include="'page/nav.html'"></div>
+<app-nav email="{{loggedInUser && loggedInUser.email}}"></app-nav>
 <div class="container">
     <div class="col-md-9">
         <ng-view></ng-view>
     </div>
     <div class="col-md-3">
-        <div class="panel panel-default">
+        <div class="panel panel-default" ng-hide="loggedInUser">
             <div class="panel-heading">
                 <h3 class="panel-title">Đăng nhập hệ thống</h3>
             </div>
@@ -41,7 +40,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default" ng-show="loggedIn">
+        <div class="panel panel-default" ng-show="loggedInUser">
             <div class="panel-heading">
                 <h3 class="panel-title">Thông tin tài khoản</h3>
             </div>
