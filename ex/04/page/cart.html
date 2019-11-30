@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Giỏ hàng</div>
+    <div class="panel-body" ng-if="!carts.length">
+        <p>Giỏ hàng của bạn đang rỗng</p>
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Product 123</td>
+            <td>150.000 đ</td>
+        </tr>
+
+        </tbody>
+    </table>
+    <hr>
+    <div class="clearfix">
+        <a class="btn btn-danger" href="">Xóa giỏ hàng</a>
+    </div>
+</div>

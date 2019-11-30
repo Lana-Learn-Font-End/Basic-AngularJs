@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Lorem ipsum dolor sit amet",
+    "price": 650000,
+    "image": "images/b1.jpg"
+  },
+  {
+    "name": "Consectetur adipisicing elit",
+    "price": 1050000,
+    "image": "images/b2.jpg"
+  },
+  {
+    "name": "Ipsum numquam modi doloremque",
+    "price": 250000,
+    "image": "images/b3.jpg"
+  },
+  {
+    "name": "Dolore molestiae laudantium",
+    "price": 350000,
+    "image": "images/b4.jpg"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Lorem ipsum dolor sit amet",
+    "price": 150000,
+    "image": "images/p1.jpg"
+  },
+  {
+    "name": "consectetur adipisicing elit",
+    "price": 150000,
+    "image": "images/p2.jpg"
+  },
+  {
+    "name": "Obcaecati eligendi dolores",
+    "price": 150000,
+    "image": "images/p3.jpg"
+  },
+  {
+    "name": "repudiandae cupiditate sunt",
+    "price": 150000,
+    "image": "images/p4.jpg"
+  }
+]
