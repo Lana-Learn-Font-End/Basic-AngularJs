@@ -4,8 +4,8 @@ function DetailModalController($element) {
     ctrl.bool = (val) => !!val;
     ctrl.$onChanges = () => (
         ctrl.bool(ctrl.show) ?
-            ctrl.modal.modal("show") :
-            ctrl.modal.modal("hide")
+        ctrl.modal.modal("show") :
+        ctrl.modal.modal("hide")
     );
 }
 

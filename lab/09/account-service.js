@@ -14,19 +14,19 @@ app.service("accountService", function ($http) {
                     .get("userinfo.json")
                     .then(data => {
                         sessionStorage.setItem(`${this.appId}-accountInfo`, JSON.stringify(data.data));
-                        resolve(data)
+                        resolve(data);
                     })
                     .catch(err => reject(err));
             } else {
                 resolve();
             }
-        })
+        });
     };
 
     this.logout = () => {
         if (this.isLoggedIn) {
             sessionStorage.removeItem(`${this.appId}-accountInfo`);
-            sessionStorage.removeItem(`${this.appId}-isLoggedIn`)
+            sessionStorage.removeItem(`${this.appId}-isLoggedIn`);
         }
-    }
+    };
 });

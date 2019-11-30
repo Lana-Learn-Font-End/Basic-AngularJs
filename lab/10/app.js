@@ -7,5 +7,5 @@ app.config(function ($routeProvider) {
     $routeProvider.when("/cart", {
         template: "<app-cart></app-cart>"
     });
-    $routeProvider.otherwise({redirectTo: "/products"})
+    $routeProvider.otherwise({redirectTo: "/products"});
 });

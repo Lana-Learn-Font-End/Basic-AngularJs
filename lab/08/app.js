@@ -8,7 +8,7 @@ app.controller("ProductCtrl", function ProductCtrl($http, $filter) {
                 ctrl.data = products.data;
                 ctrl.originData = products.data;
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     };
     ctrl.originData = [];
     ctrl.data = [];
@@ -75,5 +75,5 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when("/table", {template: "<app-table data='ctrl.data' on-show-detail='ctrl.showModal(index)'></app-table>"})
         .when("/card", {template: "<app-card-list data='ctrl.data' on-show-detail='ctrl.showModal(index)'></app-card-list>"})
-        .otherwise({redirectTo: "/table"})
+        .otherwise({redirectTo: "/table"});
 });

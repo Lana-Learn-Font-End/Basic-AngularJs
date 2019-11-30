@@ -11,12 +11,12 @@ function loginCtrl(accountService) {
                 if (!account)
                     ctrl.loginErrorMessage = "Wrong username or password";
             })
-            .catch(() => ctrl.loginErrorMessage = "Server error!")
+            .catch(() => ctrl.loginErrorMessage = "Server error!");
     };
     ctrl.logout = () => {
         accountService.logout();
         ctrl.loggedOut = true;
-    }
+    };
 }
 
 app.component("appLogin", {

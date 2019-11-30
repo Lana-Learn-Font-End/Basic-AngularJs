@@ -4,7 +4,7 @@ app.service("cartService", function () {
 
     // init data key if is it null
     if (!this.storage.getItem(this.key)) {
-        this.storage.setItem(this.key, JSON.stringify([]))
+        this.storage.setItem(this.key, JSON.stringify([]));
     }
 
     this.addItem = (item, quantity = 1) => {
@@ -34,5 +34,5 @@ app.service("cartService", function () {
 
     this.clear = () => {
         this.storage.clear();
-    }
+    };
 });

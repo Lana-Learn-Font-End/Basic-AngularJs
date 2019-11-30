@@ -12,11 +12,11 @@ function AppCartCtrl(cartService) {
     ctrl.total = () => (
         ctrl.data.reduce((total, current) => {
             current.item.salePrice > 0 ?
-                total += current.item.salePrice * current.quantity :
-                total += current.item.price * current.quantity;
+            total += current.item.salePrice * current.quantity :
+            total += current.item.price * current.quantity;
             return total;
         }, 0)
-    )
+    );
 }
 
 app.component("appCart", {

@@ -48,5 +48,5 @@ app.directive("fuckingStrong", function () {
 });
 
 app.controller("Ctrl", function ($scope) {
-    $scope.log = (val) => console.log(val)
+    $scope.log = (val) => console.log(val);
 });

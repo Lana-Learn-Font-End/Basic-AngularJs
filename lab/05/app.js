@@ -17,29 +17,29 @@ app.controller("ProductCtrl", function () {
 app.directive("listJs", function () {
     return {
         template: "<table class=\"table\">" +
-            "    <thead>" +
-            "    <tr>" +
-            "        <th scope=\"col\" ng-show=\"showIndex\">STT</th>" +
-            "        <th scope=\"col\" ng-repeat=\"col in cols track by $index\">" +
-            "            {{col.charAt(0).toUpperCase() + col.slice(1)}}" +
-            "        </th>" +
-            "    </tr>" +
-            "    </thead>" +
-            "    <tbody>" +
-            "    <tr ng-repeat=\"item in data track by $index\">" +
-            "        <td ng-show=\"showIndex\">{{$index + 1}}</td>" +
-            "        <td ng-repeat=\"col in cols track by $index\">" +
-            "            {{item[col]}}" +
-            "        </td>" +
-            "    </tr>" +
-            "    </tbody>" +
-            "</table>",
+                  "    <thead>" +
+                  "    <tr>" +
+                  "        <th scope=\"col\" ng-show=\"showIndex\">STT</th>" +
+                  "        <th scope=\"col\" ng-repeat=\"col in cols track by $index\">" +
+                  "            {{col.charAt(0).toUpperCase() + col.slice(1)}}" +
+                  "        </th>" +
+                  "    </tr>" +
+                  "    </thead>" +
+                  "    <tbody>" +
+                  "    <tr ng-repeat=\"item in data track by $index\">" +
+                  "        <td ng-show=\"showIndex\">{{$index + 1}}</td>" +
+                  "        <td ng-repeat=\"col in cols track by $index\">" +
+                  "            {{item[col]}}" +
+                  "        </td>" +
+                  "    </tr>" +
+                  "    </tbody>" +
+                  "</table>",
         scope: {
             data: "<",
             cols: "<",
             showIndex: "<"
         }
-    }
+    };
 });
 
 app.directive("listHtml", function () {
@@ -54,5 +54,5 @@ app.directive("listHtml", function () {
         compile: (element, attrs) => {
             if (!attrs.showIndex) showIndex = false;
         }
-    }
+    };
 });

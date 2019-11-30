@@ -16,7 +16,7 @@ app.controller("AppCtrl", function ($route, $location, $rootScope, accountServic
                 ctrl.loginModalShow = true;
             $location.path("/account");
         }
-    })
+    });
 });
 
 app.config(function ($routeProvider) {
@@ -25,5 +25,5 @@ app.config(function ($routeProvider) {
     });
     $routeProvider.when("/account", {
         template: "<app-login></app-login>"
-    })
+    });
 });

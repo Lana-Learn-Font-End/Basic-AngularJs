@@ -26,7 +26,7 @@ app.controller("MainCtrl", function ($scope, $http) {
 
     $http
         .get("data/students.json")
-        .then((res) => $scope.data = res.data)
+        .then((res) => $scope.data = res.data);
 });
 
 app.component("appHome", {
@@ -55,7 +55,7 @@ app.component("appHome", {
                 const newItem = {...item};
                 delete newItem.password;
                 return newItem;
-            })
+            });
         };
 
         ctrl.show = function (index) {
@@ -64,7 +64,7 @@ app.component("appHome", {
 
         ctrl.close = function () {
             ctrl.studentDetail = undefined;
-        }
+        };
     },
     bindings: {
         data: "<"
@@ -76,10 +76,10 @@ app.component("appModal", {
     controller: function ModalController($element) {
         const ctrl = this;
         ctrl.$onChanges = function () {
-            ctrl.show ?
-                $element.children(".modal").modal("show") :
-                $element.children(".modal").modal("hide")
-        }
+            ctrl.show
+            ? $element.children(".modal").modal("show")
+            : $element.children(".modal").modal("hide");
+        };
     },
     transclude: true,
     bindings: {
@@ -101,5 +101,5 @@ app.config(function ($routeProvider) {
 
     $routeProvider.otherwise({
         redirectTo: "/home",
-    })
+    });
 });

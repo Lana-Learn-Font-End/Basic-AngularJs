@@ -14,7 +14,7 @@ function TableCtrl($routeParams, $route) {
 
     ctrl.show = (pageIndex) => {
         const index = ctrl.page * ctrl.pageSize + pageIndex;
-        ctrl.itemDetail = ctrl.data[index]
+        ctrl.itemDetail = ctrl.data[index];
     };
 
     ctrl.getDataPage = () => {

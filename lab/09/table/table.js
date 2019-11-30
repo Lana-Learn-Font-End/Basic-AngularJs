@@ -4,13 +4,13 @@ function AppTableCtrl($http) {
     ctrl.data = [];
 
     ctrl.delete = (index) => {
-        ctrl.data = ctrl.data.filter((_, i) => i !== index)
+        ctrl.data = ctrl.data.filter((_, i) => i !== index);
     };
     ctrl.showDetail = (index) => {
-        ctrl.itemDetail = ctrl.data[index]
+        ctrl.itemDetail = ctrl.data[index];
     };
     ctrl.hideDetail = () => {
-        ctrl.itemDetail = undefined
+        ctrl.itemDetail = undefined;
     };
 
     $http

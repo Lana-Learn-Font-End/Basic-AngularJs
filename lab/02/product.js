@@ -5,11 +5,11 @@ app.controller("productCtrl", function ($scope) {
     $scope.productDetail = $scope.products[0];
     $scope.showDetail = (index) => {
         $("#prodDetail").modal("show");
-        $scope.productDetail = $scope.products[index]
+        $scope.productDetail = $scope.products[index];
     };
     $scope.closeDetail = () => {
         $("#prodDetail").modal("hide");
-    }
+    };
 });
 
 
@@ -20,6 +20,6 @@ function getProducts(number) {
                 name: `Product Number ${i}`,
                 price: 2000,
                 image: "https://websanova.com/img/posts/jquery-plugin-development-boilerplate.png",
-            }
-        })
+            };
+        });
 }
