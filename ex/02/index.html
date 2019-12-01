@@ -10,6 +10,7 @@
 <body ng-controller="MainCtrl">
 <!-- include file menu nav.html -->
 <div ng-include="'page/nav.html'"></div>
+
 <div class="container">
     <div class="col-md-9">
         <ng-view></ng-view>
@@ -52,21 +53,25 @@
 </div>
 
 <!-- modal-view-student by id -->
-<app-modal show="studentDetail">
-    <div class="modal-header">
-        <button aria-hidden="true" class="close" data-dismiss="modal" ng-click="closeDetail()" type="button">&times;
-        </button>
-        <h4 class="modal-title">{{studentDetail.name}}</h4>
+<div class="modal fade" id="modal-show">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;</button>
+                <h4 class="modal-title">{{studentDetail.name}}</h4>
+            </div>
+            <div class="modal-body">
+                <p><b>Code:</b> {{studentDetail.code}}</p>
+                <p><b>Họ tên:</b> {{studentDetail.name}}</p>
+                <p><b>Email:</b> {{studentDetail.email}}</p>
+                <p><b>Điểm html:</b> {{studentDetail.mark_html}}</p>
+                <p><b>Điểm angularJS:</b> {{studentDetail.mark_ajs}}</p>
+                <p><b>Điểm WHCJ:</b> {{studentDetail.mark_dwhcj}}</p>
+            </div>
+        </div>
     </div>
-    <div class="modal-body">
-        <p><b>Code:</b>{{studentDetail.code}}</p>
-        <p><b>Họ tên:</b> {{studentDetail.name}}</p>
-        <p><b>Email:</b> {{studentDetail.email}}</p>
-        <p><b>Điểm html:</b> {{studentDetail.mark_html}}</p>
-        <p><b>Điểm angularJS:</b> {{studentDetail.mark_ajs}}</p>
-        <p><b>Điểm WHCJ:</b> {{studentDetail.mark_dwhcj}}</p>
-    </div>
-</app-modal>
+</div>
+
 <script crossorigin="anonymous"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

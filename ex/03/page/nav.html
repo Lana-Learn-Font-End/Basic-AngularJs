@@ -2,9 +2,9 @@
     <div class="container">
         <a class="navbar-brand" href="#">Company Name</a>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#!/">Trang chủ</a></li>
-            <li><a href="#!/about">Giới thiệu</a></li>
-            <li><a href="#!/product">Sản phẩm</a></li>
+            <li ng-class="{active: startsWith('/home')}"><a href="#!/home">Trang chủ</a></li>
+            <li ng-class="{active: startsWith('/about')}"><a href="#!/about">Giới thiệu</a></li>
+            <li ng-class="{active: startsWith('/product')}"><a href="#!/product">Sản phẩm</a></li>
         </ul>
     </div>
 </nav>

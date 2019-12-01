@@ -1,14 +1,13 @@
 <div class="row">
-    <div class="col-md-3" ng-repeat="sp in products">
+    <div class="col-md-3" ng-repeat="product in data">
         <div class="thumbnail">
-            <img alt="" ng-src="{{sp.image}}">
+            <img alt="" ng-src="{{product.image}}">
             <div class="caption text-center">
-                <h3>{{sp.name}}</h3>
+                <h3>{{product.name}}</h3>
+                <p>Giá: {{product.price | currency:"":0}} đ</p>
                 <p>
-                    Giá: {{sp.price | currency:"":0}} đ
-                </p>
-                <p>
-                    <button class="btn-btn-xs btn-primary" ng-click="show_sp(sp)" type="button">Xem</button>
+                    <button class="btn-btn-xs btn-primary" ng-click="showProductDetail(product)" type="button">Xem
+                    </button>
                 </p>
             </div>
         </div>
