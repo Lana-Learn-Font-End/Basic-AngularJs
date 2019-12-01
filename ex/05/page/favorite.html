@@ -1,12 +1,12 @@
 <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">Video yêu thích</div>
-    <div class="panel-body" ng-if="!carts.length">
+    <div class="panel-body" ng-hide="favData.length > 0">
         <p>Không có video nào được yêu thích</p>
     </div>
 
     <!-- Table -->
-    <table class="table">
+    <table class="table" ng-show="favData.length > 0">
         <thead>
         <tr>
             <th>STT</th>
@@ -14,15 +14,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="c in carts">
-            <td>1</td>
-            <td>Movie name</td>
+        <tr ng-repeat="item in favData track by $index">
+            <td>{{$index + 1}}</td>
+            <td>{{item.name}}</td>
         </tr>
-
         </tbody>
     </table>
     <hr>
     <div class="clearfix">
-        <a class="btn btn-danger" href="">Xóa các video yêu thích</a>
+        <a class="btn btn-danger" href="" ng-click="deleteAllFav()">Xóa các video yêu thích</a>
     </div>
 </div>
