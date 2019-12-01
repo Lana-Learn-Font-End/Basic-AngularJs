@@ -20,23 +20,25 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;</button>
-                <h4 class="modal-title">Proname</h4>
+                <h4 class="modal-title">{{productDetail.name}}</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-4">
                         <a class="thumbnail" href="">
-                            <img alt="" ng-src="">
+                            <img alt="img" ng-src="{{productDetail.image}}">
                         </a>
                     </div>
                     <div class="col-md-8">
-                        <h2>Proname</h2>
-                        <h2>Giá: 150000 đ</h2>
+                        <h2>{{productDetail.name}}</h2>
+                        <h2>{{productDetail.price | currency:"":0}} đ</h2>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" ng-click="" type="button">Thêm vào giỏ hàng</button>
+                <button class="btn btn-primary" data-dismiss="modal" ng-click="addToCart(productDetail)" type="button">
+                    Thêm vào giỏ hàng
+                </button>
             </div>
         </div>
     </div>

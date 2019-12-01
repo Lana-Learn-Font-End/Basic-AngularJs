@@ -13,9 +13,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#!/">Trang chủ</a></li>
+                <li class="active"><a href="#!/home">Trang chủ</a></li>
                 <li class="active">
-                    <a href="#!/cart">Giỏ hàng ({{total_qtt}} items - {{total_amount | currency:"":0}} đ)</a>
+                    <a href="#!/cart">Giỏ hàng ({{cartData.length}} items - {{totalAmount | currency:"":0}} đ)</a>
                 </li>
             </ul>
             <!-- <ul class="nav navbar-nav navbar-right">
