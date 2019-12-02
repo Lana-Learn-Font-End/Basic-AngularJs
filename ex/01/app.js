@@ -43,6 +43,21 @@ app.component("appNav", {
     }
 });
 
+app.filter("studentFilter", function () {
+    return function (students, keyword) {
+        return students.filter(
+            (student) => {
+                if (keyword !== "" && keyword != undefined) {
+                    return student.name.includes(keyword) ||
+                           student.id.toString().includes(keyword) ||
+                           student.email.includes(keyword);
+                }
+                return true;
+            }
+        )
+    }
+});
+
 app.config(function ($routeProvider) {
     $routeProvider.when("/home", {
         templateUrl: "page/home.html"

@@ -15,7 +15,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="student in data | filter:search">
+        <!--This studentFilter only search on id, name and email.-->
+        <!--If you want to search on all field, include password and username,-->
+        <!--change this to filter:search.-->
+        <tr ng-repeat="student in data | studentFilter:search">
             <td>{{student.id}}</td>
             <td>{{student.name}}</td>
             <td>{{student.email}}</td>
