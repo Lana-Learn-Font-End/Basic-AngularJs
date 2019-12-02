@@ -47,12 +47,10 @@ app.filter("studentFilter", function () {
     return function (students, keyword) {
         return students.filter(
             (student) => {
-                if (keyword !== "" && keyword != undefined) {
-                    return student.name.includes(keyword) ||
-                           student.id.toString().includes(keyword) ||
-                           student.email.includes(keyword);
-                }
-                return true;
+                keyword = keyword || "";
+                return student.name.includes(keyword) ||
+                       student.id.toString().includes(keyword) ||
+                       student.email.includes(keyword);
             }
         )
     }
